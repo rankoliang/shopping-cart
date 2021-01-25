@@ -26,7 +26,7 @@ const Routes = () => {
           <Home company={company} />
         </Route>
         <Route exact path="/shop">
-          <Shop />
+          <Shop company={company} />
         </Route>
       </Switch>
     </Router>

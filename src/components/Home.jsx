@@ -1,4 +1,10 @@
+import { useEffect } from 'react';
+
 const Home = ({ company }) => {
+  useEffect(() => {
+    document.title = company.name;
+  });
+
   return (
     <section className="hero is-primary is-fullheight-with-navbar">
       <div className="hero-body">

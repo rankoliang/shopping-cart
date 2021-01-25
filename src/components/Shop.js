@@ -1,7 +1,22 @@
-const Shop = () => {
+import { useEffect } from 'react';
+import Product from './Product';
+
+const Shop = ({ company }) => {
+  useEffect(() => {
+    document.title = `Shop - ${company.name}`;
+  });
+
   return (
-    <div>
-      <h1 className="title is-1">Shop</h1>
+    <div className="container">
+      <div className="columns mx-3 is-multiline">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
     </div>
   );
 };
