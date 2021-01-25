@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Burger from './Burger';
 import NavMenu from './NavMenu';
 
-const Navbar = () => {
+const Navbar = ({ company }) => {
   const [active, setActive] = useState(false);
 
   const toggleActive = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="navbar-brand">
         <div className="navbar-item">
           <Link to="/" className="title">
-            Shopping Cart
+            {company.name}
           </Link>
         </div>
         <Burger active={active} onClick={toggleActive} />
