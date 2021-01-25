@@ -20,7 +20,7 @@ const Navbar = () => {
         </div>
         <Burger active={active} onClick={toggleActive} />
       </div>
-      <NavMenu active={active} />
+      <NavMenu active={active} setActive={setActive} />
     </nav>
   );
 };
