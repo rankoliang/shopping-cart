@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar is-light">
       <div className="navbar-brand">
         <div className="navbar-item">
           <Link to="/" className="title">

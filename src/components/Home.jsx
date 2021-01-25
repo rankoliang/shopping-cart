@@ -1,8 +1,13 @@
 const Home = () => {
   return (
-    <div>
-      <h1 className="title is-1">Home</h1>
-    </div>
+    <section className="hero is-primary is-fullheight-with-navbar">
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title is-1">Shopping Cart</h1>
+          <h2 className="subtitle">Description</h2>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,19 +1,22 @@
+import styled from 'styled-components';
+
+const StyledBurger = styled.button`
+  background: none;
+  border: 0;
+`;
+
 const Burger = ({ onClick, active }) => {
   return (
-    <button
+    <StyledBurger
       className={`navbar-burger ${active ? 'is-active' : ''}`}
       aria-label="menu"
       aria-expanded={active}
-      style={{
-        background: 'none',
-        border: 0,
-      }}
       onClick={onClick}
     >
       <span aria-hidden="true" />
       <span aria-hidden="true" />
       <span aria-hidden="true" />
-    </button>
+    </StyledBurger>
   );
 };
 
