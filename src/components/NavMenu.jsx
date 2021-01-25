@@ -13,6 +13,9 @@ const NavMenu = ({ active }) => {
         >
           Home
         </NavLink>
+        <NavLink to="/shop" className="navbar-item" activeClassName="is-active">
+          Shop
+        </NavLink>
       </div>
     </div>
   );
