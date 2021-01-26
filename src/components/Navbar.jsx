@@ -14,7 +14,7 @@ const Navbar = ({ company }) => {
     <nav className="navbar is-light">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <Link to="/" className="title">
+          <Link to="/" className="title is-primary">
             {company.name}
           </Link>
         </div>

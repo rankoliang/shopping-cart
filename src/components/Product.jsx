@@ -22,7 +22,9 @@ const Product = () => {
           <h4 className="subtitle is-5">{faker.lorem.words(5)}</h4>
         </div>
         <Footer className="card-footer">
-          <div className="card-footer-item">$ {faker.commerce.price()}</div>
+          <div className="card-footer-item">
+            {faker.commerce.price(1, 100, 2, '$')}
+          </div>
           <button className="card-footer-item button is-primary h-100">
             Add to Cart
           </button>

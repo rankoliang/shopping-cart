@@ -1,13 +1,11 @@
-import { useEffect } from 'react';
 import Product from './Product';
+import useTitle from '../hooks/useTitle';
 
-const Shop = ({ company }) => {
-  useEffect(() => {
-    document.title = `Shop - ${company.name}`;
-  });
+const Shop = () => {
+  useTitle('Shop');
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="columns mx-3 is-multiline">
         <Product />
         <Product />
