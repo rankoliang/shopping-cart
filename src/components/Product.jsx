@@ -1,5 +1,4 @@
 import PlaceholderImage from './PlaceholderImage';
-import faker from 'faker';
 import styled from 'styled-components';
 
 const Footer = styled.footer`
@@ -8,7 +7,7 @@ const Footer = styled.footer`
   width: 100%;
 `;
 
-const Product = () => {
+const Product = ({ product: { name, description, price } }) => {
   return (
     <div className="column is-one-third">
       <div className="card h-100 pb-6">
@@ -18,13 +17,11 @@ const Product = () => {
           </figure>
         </div>
         <div className="card-content">
-          <h3 className="title is-4">{faker.commerce.productName(2)}</h3>
-          <h4 className="subtitle is-5">{faker.lorem.words(5)}</h4>
+          <h3 className="title is-4">{name}</h3>
+          <h4 className="subtitle is-5">{description}</h4>
         </div>
         <Footer className="card-footer">
-          <div className="card-footer-item">
-            {faker.commerce.price(1, 100, 2, '$')}
-          </div>
+          <div className="card-footer-item">{price}</div>
           <button className="card-footer-item button is-primary h-100">
             Add to Cart
           </button>

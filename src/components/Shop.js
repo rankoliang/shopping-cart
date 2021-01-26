@@ -1,19 +1,15 @@
 import Product from './Product';
 import useTitle from '../hooks/useTitle';
 
-const Shop = () => {
+const Shop = ({ products }) => {
   useTitle('Shop');
 
   return (
     <div className="container mt-4">
       <div className="columns mx-3 is-multiline">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {products.map((product) => (
+          <Product product={product} key={product.id} />
+        ))}
       </div>
     </div>
   );
