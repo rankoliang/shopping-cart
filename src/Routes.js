@@ -1,10 +1,12 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Navbar from './components/Navbar';
 import faker from 'faker';
 import uniqid from 'uniqid';
+import CompanyContext from './context/CompanyContext';
+import ProductsContext from './context/ProductsContext';
 
 const Routes = () => {
   const company = {
@@ -25,23 +27,25 @@ const Routes = () => {
     document.title = company.name;
   });
 
-  const home = <Home company={company} products={products} />;
-
   return (
-    <Router>
-      <Navbar company={company} />
-      <Switch>
-        <Route exact path="/">
-          {home}
-        </Route>
-        <Route exact path="/home">
-          {home}
-        </Route>
-        <Route exact path="/shop">
-          <Shop products={products} />
-        </Route>
-      </Switch>
-    </Router>
+    <CompanyContext.Provider value={company}>
+      <ProductsContext.Provider value={products}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/shop">
+              <Shop />
+            </Route>
+          </Switch>
+        </Router>
+      </ProductsContext.Provider>
+    </CompanyContext.Provider>
   );
 };
 

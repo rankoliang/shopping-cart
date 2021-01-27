@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import Product from './Product';
 import useTitle from '../hooks/useTitle';
+import ProductsContext from '../context/ProductsContext';
 
-const Shop = ({ products }) => {
+const Shop = () => {
+  const products = useContext(ProductsContext);
   useTitle('Shop');
 
   return (

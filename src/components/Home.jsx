@@ -1,8 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Product from './Product';
+import CompanyContext from '../context/CompanyContext';
+import ProductsContext from '../context/ProductsContext';
 
-const Home = ({ company, products }) => {
+const Home = () => {
+  const company = useContext(CompanyContext);
+  const products = useContext(ProductsContext);
+
   useEffect(() => {
     document.title = company.name;
   });
