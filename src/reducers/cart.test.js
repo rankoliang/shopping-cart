@@ -102,5 +102,17 @@ describe('cart', () => {
         });
       });
     });
+
+    describe('when the action is empty', () => {
+      it('empties the cart', () => {
+        const cart = reducer(initialState, {
+          type: 'set',
+          item,
+          quantity: 2,
+        });
+
+        expect(reducer(cart, { type: 'empty' })).toEqual(initialState);
+      });
+    });
   });
 });

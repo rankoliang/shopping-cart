@@ -27,6 +27,10 @@ const decrement = (state, item) => {
   }
 };
 
+const empty = () => {
+  return initialState;
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'set':
@@ -37,6 +41,8 @@ const reducer = (state, action) => {
       return increment(state, action.item);
     case 'decrement':
       return decrement(state, action.item);
+    case 'empty':
+      return empty();
   }
 };
 
