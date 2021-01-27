@@ -1,7 +1,7 @@
 const initialState = new Map();
 
 const set = (state, item, quantity) => {
-  if (quantity === 0) {
+  if (quantity <= 0) {
     return remove(state, item);
   } else {
     return new Map([...state, [item, quantity]]);
@@ -12,8 +12,19 @@ const remove = (state, itemToRemove) => {
   return new Map([[...state].filter(([item]) => item !== itemToRemove)]);
 };
 
-const add = (state, item) => {
-  return new Map([...state, [item, (state.get(item) || 0) + 1]]);
+const increment = (state, item) => {
+  const quantity = state.get(item) || 0;
+  return set(state, item, quantity + 1);
+};
+
+const decrement = (state, item) => {
+  const quantity = state.get(item);
+
+  if (quantity) {
+    return set(state, item, quantity - 1);
+  } else {
+    return state;
+  }
 };
 
 const reducer = (state, action) => {
@@ -22,8 +33,10 @@ const reducer = (state, action) => {
       return set(state, action.item, action.quantity);
     case 'remove':
       return remove(state, action.item);
-    case 'add':
-      return add(state, action.item);
+    case 'increment':
+      return increment(state, action.item);
+    case 'decrement':
+      return decrement(state, action.item);
   }
 };
 
