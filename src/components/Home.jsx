@@ -20,14 +20,14 @@ const Home = ({ company, products }) => {
       <section className="section container">
         <div className="is-flex is-align-items-center mb-2">
           <h1 className="title mb-0 mr-2 is-2">Featured Items</h1>
-          <Link to="shop" className="button is-info">Shop</Link>
+          <Link to="shop" className="button is-info">
+            Shop
+          </Link>
         </div>
         <div className="box">
-          <div className="columns mx-3 is-multiline">
+          <div className="columns mx-3 is-multiline is-centered">
             {products.slice(0, 3).map((product) => (
-              <div className="column is-one-third" key={product.id}>
-                <Product product={product} />
-              </div>
+              <Product product={product} key={product.id} />
             ))}
           </div>
         </div>

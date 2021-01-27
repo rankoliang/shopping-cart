@@ -6,12 +6,12 @@ const Shop = ({ products }) => {
 
   return (
     <div className="container mt-4">
-      <div className="columns mx-3 is-multiline">
-        {products.map((product) => (
-          <div className="column is-one-third" key={product.id}>
-            <Product product={product} />
-          </div>
-        ))}
+      <div className="box">
+        <div className="columns mx-3 is-multiline">
+          {products.map((product) => (
+            <Product product={product} key={product.id} />
+          ))}
+        </div>
       </div>
     </div>
   );
