@@ -8,7 +8,7 @@ const useTitle = (page) => {
     return () => {
       document.title = title;
     };
-  }, []);
+  });
 };
 
 export default useTitle;
