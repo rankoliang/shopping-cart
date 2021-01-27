@@ -25,15 +25,17 @@ const Routes = () => {
     document.title = company.name;
   });
 
+  const home = <Home company={company} products={products} />;
+
   return (
     <Router>
       <Navbar company={company} />
       <Switch>
         <Route exact path="/">
-          <Home company={company} />
+          {home}
         </Route>
         <Route exact path="/home">
-          <Home company={company} />
+          {home}
         </Route>
         <Route exact path="/shop">
           <Shop products={products} />

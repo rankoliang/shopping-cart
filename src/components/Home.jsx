@@ -1,19 +1,38 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Product from './Product';
 
-const Home = ({ company }) => {
+const Home = ({ company, products }) => {
   useEffect(() => {
     document.title = company.name;
   });
 
   return (
-    <section className="hero is-primary is-fullheight-with-navbar">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title is-1">{company.name}</h1>
-          <h2 className="subtitle">{company.phrase}</h2>
+    <main>
+      <section className="hero is-primary is-medium">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title is-1">{company.name}</h1>
+            <h2 className="subtitle">{company.phrase}</h2>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="section container">
+        <div className="is-flex is-align-items-center mb-2">
+          <h1 className="title mb-0 mr-2 is-2">Featured Items</h1>
+          <Link to="shop" className="button is-info">Shop</Link>
+        </div>
+        <div className="box">
+          <div className="columns mx-3 is-multiline">
+            {products.slice(0, 3).map((product) => (
+              <div className="column is-one-third" key={product.id}>
+                <Product product={product} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 

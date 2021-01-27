@@ -8,7 +8,9 @@ const Shop = ({ products }) => {
     <div className="container mt-4">
       <div className="columns mx-3 is-multiline">
         {products.map((product) => (
-          <Product product={product} key={product.id} />
+          <div className="column is-one-third" key={product.id}>
+            <Product product={product} />
+          </div>
         ))}
       </div>
     </div>
