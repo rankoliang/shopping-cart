@@ -24,7 +24,7 @@ const NavMenu = ({ active, setActive }) => {
         </NavLink>
       </div>
       <div className="navbar-end">
-        <div className="navbar-item">0 items in cart</div>
+        <div className="navbar-item">Items in cart: 0</div>
       </div>
     </div>
   );
