@@ -7,11 +7,6 @@ describe('app', () => {
     it('displays an additional item in the cart', () => {
       render(<App />);
 
-      // visit the shop
-      act(() => {
-        userEvent.click(screen.getAllByRole('link', /shop/i)[0]);
-      });
-
       expect(screen.getByText(/Items in cart: 0/i)).toBeInTheDocument();
 
       // add the first item to cart

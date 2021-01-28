@@ -15,6 +15,7 @@ const NavMenu = ({ active, setActive }) => {
           activeClassName="is-active"
           isActive={checkActive('/')}
           onClick={() => setActive(false)}
+          replace
         >
           Home
         </NavLink>
@@ -23,6 +24,7 @@ const NavMenu = ({ active, setActive }) => {
           className="navbar-item"
           activeClassName="is-active"
           onClick={() => setActive(false)}
+          replace
         >
           Shop
         </NavLink>
@@ -33,6 +35,7 @@ const NavMenu = ({ active, setActive }) => {
           className="navbar-item"
           activeClassName="is-active"
           onClick={() => setActive(false)}
+          replace
         >
           Items in cart: {numCartItems(cart.state)}
         </NavLink>
