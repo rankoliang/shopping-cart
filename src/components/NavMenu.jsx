@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { checkActive } from '../helpers';
+import { checkActive, numCartItems } from '../helpers';
+import CartContext from '../context/CartContext';
 
 const NavMenu = ({ active, setActive }) => {
+  const cart = useContext(CartContext);
+
   return (
     <div className={`navbar-menu ${active ? 'is-active' : ''}`}>
       <div className="navbar-start">
@@ -24,7 +28,9 @@ const NavMenu = ({ active, setActive }) => {
         </NavLink>
       </div>
       <div className="navbar-end">
-        <div className="navbar-item">Items in cart: 0</div>
+        <div className="navbar-item">
+          Items in cart: {numCartItems(cart)}
+        </div>
       </div>
     </div>
   );

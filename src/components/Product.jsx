@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import PlaceholderImage from './PlaceholderImage';
 import styled from 'styled-components';
+import CartContext from '../context/CartContext';
 
 const Footer = styled.footer`
   position: absolute;
@@ -12,7 +14,9 @@ const Card = styled.div`
   width: 100%;
 `;
 
-const Product = ({ product: { name, description, price } }) => {
+const Product = ({ product, product: { name, description, price } }) => {
+  const cart = useContext(CartContext);
+
   return (
     <div className="column is-one-third-desktop is-half-tablet is-flex is-justify-content-center">
       <Card className="card h-100 pb-6">
@@ -27,7 +31,10 @@ const Product = ({ product: { name, description, price } }) => {
         </div>
         <Footer className="card-footer">
           <div className="card-footer-item">{price}</div>
-          <button className="card-footer-item button is-primary h-100">
+          <button
+            className="card-footer-item button is-primary h-100"
+            onClick={() => cart.dispatch({ type: 'increment', item: product })}
+          >
             Add to Cart
           </button>
         </Footer>
