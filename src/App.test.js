@@ -21,7 +21,7 @@ describe('app', () => {
         );
       });
 
-      // expect(screen.getByText(/Items in cart: 1/i)).toBeInTheDocument();
+      expect(screen.getByText(/Items in cart: 1/i)).toBeInTheDocument();
     });
   });
 });

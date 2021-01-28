@@ -17,7 +17,7 @@ const products = new Array(21).fill().map(() => {
     id: uniqid(),
     name: faker.commerce.productName(),
     description: faker.lorem.words(5),
-    price: faker.commerce.price(1, 100, 2, '$'),
+    price: faker.commerce.price(1, 100, 2),
   };
 });
 

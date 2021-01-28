@@ -28,9 +28,14 @@ const NavMenu = ({ active, setActive }) => {
         </NavLink>
       </div>
       <div className="navbar-end">
-        <div className="navbar-item">
-          Items in cart: {numCartItems(cart)}
-        </div>
+        <NavLink
+          to="/cart"
+          className="navbar-item"
+          activeClassName="is-active"
+          onClick={() => setActive(false)}
+        >
+          Items in cart: {numCartItems(cart.state)}
+        </NavLink>
       </div>
     </div>
   );

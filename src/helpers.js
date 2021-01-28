@@ -7,7 +7,7 @@ const checkActive = (...alternativePaths) => {
 };
 
 const numCartItems = (cart) => {
-  return [...cart.state.values()].reduce((sum, quantity) => sum + quantity, 0);
+  return [...cart.values()].reduce((sum, quantity) => sum + quantity, 0);
 };
 
 export { checkActive, numCartItems };

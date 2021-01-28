@@ -30,7 +30,7 @@ const Product = ({ product, product: { name, description, price } }) => {
           <h4 className="subtitle is-5">{description}</h4>
         </div>
         <Footer className="card-footer">
-          <div className="card-footer-item">{price}</div>
+          <div className="card-footer-item">${price}</div>
           <button
             className="card-footer-item button is-primary h-100"
             onClick={() => cart.dispatch({ type: 'increment', item: product })}
