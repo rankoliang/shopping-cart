@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { cartTotal } from '../helpers';
+import { useHistory } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 import CartContext from '../context/CartContext';
 import Items from './cart/Items';
@@ -15,15 +16,29 @@ const Totals = styled.div`
 const Cart = () => {
   const cart = useContext(CartContext);
   const isCartEmpty = cart.state.size === 0;
+  const history = useHistory();
 
   useTitle('Cart');
+
+  const handlePlaceOrder = () => {
+    const message = `Your order will be placed for $${cartTotal(
+      cart.state
+    ).toFixed(2)} and your cart will be emptied. Do you wish to continue?`;
+
+    if (window.confirm(message)) {
+      cart.dispatch({ type: 'empty' });
+      history.push('/shop');
+    }
+  };
 
   return (
     <div className="container">
       <div className="mx-3">
         {isCartEmpty ? (
           <>
-            <h1 className="title is-2 has-text-centered my-3 mx-3">Your Cart</h1>
+            <h1 className="title is-2 has-text-centered my-3 mx-3">
+              Your Cart
+            </h1>
             <p className="has-text-centered">Your cart is empty :(</p>
           </>
         ) : (
@@ -48,7 +63,10 @@ const Cart = () => {
                     <span className="mr-2">Total:</span>
                     <strong>${(cartTotal(cart.state) * 1.1).toFixed(2)}</strong>
                   </div>
-                  <button className="button is-info is-align-self-stretch mt-2">
+                  <button
+                    className="button is-info is-align-self-stretch mt-2"
+                    onClick={handlePlaceOrder}
+                  >
                     Place order
                   </button>
                 </Totals>

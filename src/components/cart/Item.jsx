@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import CartContext from '../../context/CartContext';
 import { removeFromCart } from '../../helpers';
 import QuantityForm from './QuantityForm';
+import PlaceholderImage from '../PlaceholderImage';
 
 const Item = ({ product, quantity }) => {
   const cart = useContext(CartContext);
@@ -9,7 +10,8 @@ const Item = ({ product, quantity }) => {
   return (
     <div className="box">
       <div className="is-flex is-align-items-center is-justify-content-around w-100 is-flex-wrap-wrap">
-        <div className="flex-1">
+        <div className="flex-1 is-flex is-align-items-center">
+          <PlaceholderImage width={25} height={25} className="mr-1"></PlaceholderImage>
           <strong className="white-space-nowrap">{product.name}</strong>
         </div>
         <div className="is-flex is-align-items-center">

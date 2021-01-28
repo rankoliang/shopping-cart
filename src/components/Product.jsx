@@ -22,7 +22,7 @@ const Product = ({ product, product: { name, description, price } }) => {
       <Card className="card h-100 pb-6">
         <div className="card-image">
           <figure className="image is-4by3">
-            <PlaceholderImage width={600} height={450} />
+            <PlaceholderImage width={600} height={450} keyword={product.name} />
           </figure>
         </div>
         <div className="card-content">
