@@ -11,12 +11,13 @@ const Item = ({ product, quantity }) => {
     <div className="box">
       <div className="is-flex is-align-items-center is-justify-content-around w-100 is-flex-wrap-wrap">
         <div className="flex-1 is-flex is-align-items-center">
-          <PlaceholderImage
-            width={25}
-            height={25}
-            keyword={product.name}
-            className="mr-1"
-          ></PlaceholderImage>
+          <figure className="image is-24x24 mr-1">
+            <PlaceholderImage
+              width={24}
+              height={24}
+              keyword={product.name}
+            ></PlaceholderImage>
+          </figure>
           <strong className="white-space-nowrap">{product.name}</strong>
         </div>
         <div className="is-flex is-align-items-center">
