@@ -19,7 +19,19 @@ const Cart = () => {
                 <div style={{ flex: 1 }}>
                   {quantity} x <strong className="ml-2">{product.name}</strong>
                 </div>
-                <div>${product.price}</div>
+                <div className="is-flex is-align-items-center">
+                  ${product.price}
+                  <button
+                    className="button is-danger is-outlined is-small ml-2"
+                    onClick={() =>
+                      window.confirm(
+                        `Are you sure you want to remove ${product.name} from your cart?`
+                      ) && dispatch({ type: 'remove', item: product })
+                    }
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
           );

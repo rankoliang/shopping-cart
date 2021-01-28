@@ -9,7 +9,7 @@ const set = (state, item, quantity) => {
 };
 
 const remove = (state, itemToRemove) => {
-  return new Map([[...state].filter(([item]) => item !== itemToRemove)]);
+  return new Map([...state].filter(([item, _]) => item !== itemToRemove));
 };
 
 const increment = (state, item) => {
