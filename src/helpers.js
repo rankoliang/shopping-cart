@@ -15,7 +15,7 @@ const cartTotal = (cart) => {
     return total + Number(price) * quantity;
   }, 0);
 
-  return total.toFixed(2);
+  return total;
 };
 
 const removeFromCart = (product) => {
