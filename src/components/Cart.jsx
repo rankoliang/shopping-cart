@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { cartTotal } from '../helpers';
 import CartContext from '../context/CartContext';
 
 const Cart = () => {
@@ -14,7 +15,7 @@ const Cart = () => {
         )}
         {[...state].map(([product, quantity]) => {
           return (
-            <div className="box">
+            <div className="box" key={product.id}>
               <div className="is-flex is-align-items-center is-justify-content-around w-100">
                 <div style={{ flex: 1 }}>
                   {quantity} x <strong className="ml-2">{product.name}</strong>
@@ -22,7 +23,7 @@ const Cart = () => {
                 <div className="is-flex is-align-items-center">
                   ${product.price}
                   <button
-                    className="button is-danger is-outlined is-small ml-2"
+                    className="delete ml-1"
                     onClick={() =>
                       window.confirm(
                         `Are you sure you want to remove ${product.name} from your cart?`
@@ -36,6 +37,12 @@ const Cart = () => {
             </div>
           );
         })}
+        {!isCartEmpty && (
+          <div className="has-text-right is-size-5">
+            <span className="mr-2">Total Price:</span>
+            <strong>${cartTotal(state)}</strong>
+          </div>
+        )}
       </div>
     </div>
   );
