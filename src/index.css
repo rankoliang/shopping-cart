@@ -24,3 +24,16 @@ code {
   display: flex;
   flex-wrap: nowrap;
 }
+
+.nowrap * {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
