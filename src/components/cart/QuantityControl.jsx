@@ -5,10 +5,11 @@ const StyledQuantityControl = styled.button`
   width: 1em;
 `;
 
-const QuantityControl = ({ children, colorClass }) => {
+const QuantityControl = ({ children, colorClass, ...props }) => {
   return (
     <StyledQuantityControl
       className={`button is-large p-0 ml-1 is-outlined ${colorClass}`}
+      {...props}
     >
       {children}
     </StyledQuantityControl>

@@ -18,4 +18,10 @@ const cartTotal = (cart) => {
   return total.toFixed(2);
 };
 
-export { checkActive, numCartItems, cartTotal };
+const removeFromCart = (product) => {
+  return window.confirm(
+    `Are you sure you want to remove ${product.name} from your cart?`
+  );
+};
+
+export { checkActive, numCartItems, cartTotal, removeFromCart };

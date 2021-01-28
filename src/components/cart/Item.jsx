@@ -1,5 +1,8 @@
+import { useEffect, useContext, useState, useRef } from 'react';
 import styled from 'styled-components';
 import QuantityControl from './QuantityControl';
+import CartContext from '../../context/CartContext';
+import { removeFromCart } from '../../helpers';
 
 const Quantity = styled.input`
   -moz-appearance: textfield;
@@ -13,7 +16,19 @@ const Quantity = styled.input`
   }
 `;
 
-const Item = ({ product, quantity, dispatch }) => {
+const Item = ({ product, quantity }) => {
+  const cart = useContext(CartContext);
+  const [quantitySelected, setQuantitySelected] = useState(false);
+  const quantityInput = useRef();
+
+  useEffect(() => {
+    if (quantitySelected) {
+      quantityInput.current.focus();
+      quantityInput.current.select();
+    }
+    setQuantitySelected(false);
+  }, [quantitySelected]);
+
   return (
     <div className="box">
       <div className="is-flex is-align-items-center is-justify-content-around w-100 is-flex-wrap-wrap">
@@ -32,12 +47,57 @@ const Item = ({ product, quantity, dispatch }) => {
                 min="0"
                 max="99"
                 name={`${product.id}-quantity`}
-                defaultValue={quantity}
+                value={quantity}
+                ref={quantityInput}
+                onChange={(event) => {
+                  if (event.target.value === '') {
+                    setQuantitySelected(true);
+                    return;
+                  }
+
+                  const quantity = Number(event.target.value);
+
+                  if (quantity === 0 && !removeFromCart(product)) {
+                    return;
+                  }
+
+                  if (quantity <= 99) {
+                    cart.dispatch({
+                      type: 'set',
+                      item: product,
+                      quantity,
+                    });
+                  }
+                }}
               />
             </div>
             <span>
-              <QuantityControl colorClass="has-text-success">+</QuantityControl>
-              <QuantityControl colorClass="has-text-danger">-</QuantityControl>
+              <QuantityControl
+                colorClass="has-text-success"
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (cart.state.get(product) < 99) {
+                    cart.dispatch({ type: 'increment', item: product });
+                  }
+                }}
+              >
+                +
+              </QuantityControl>
+              <QuantityControl
+                colorClass="has-text-danger"
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (
+                    cart.state.get(product) === 1 &&
+                    !removeFromCart(product)
+                  ) {
+                    return;
+                  }
+                  cart.dispatch({ type: 'decrement', item: product });
+                }}
+              >
+                -
+              </QuantityControl>
             </span>
           </form>
           <span className="mx-1">@</span>
@@ -45,9 +105,8 @@ const Item = ({ product, quantity, dispatch }) => {
           <button
             className="delete ml-1"
             onClick={() =>
-              window.confirm(
-                `Are you sure you want to remove ${product.name} from your cart?`
-              ) && dispatch({ type: 'remove', item: product })
+              removeFromCart(product) &&
+              cart.dispatch({ type: 'remove', item: product })
             }
           >
             Remove
