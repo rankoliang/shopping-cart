@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar is-light">
+    <nav className="navbar is-light is-fixed-top">
       <div className="navbar-brand">
         <div className="navbar-item">
           <Link to="/" className="title is-primary">
