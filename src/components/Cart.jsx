@@ -21,8 +21,8 @@ const Cart = () => {
   useTitle('Cart');
 
   const handlePlaceOrder = () => {
-    const message = `Your order will be placed for $${cartTotal(
-      cart.state
+    const message = `Your order will be placed for $${(
+      cartTotal(cart.state) * 1.1
     ).toFixed(2)} and your cart will be emptied. Do you wish to continue?`;
 
     if (window.confirm(message)) {
